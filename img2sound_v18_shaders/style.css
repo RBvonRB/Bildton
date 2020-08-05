@@ -1,0 +1,436 @@
+@font-face {
+  font-family: suisse;
+  src: url(../assets/fonts/suisse/suisse.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: suisseB;
+  src: url(../assets/fonts/suisse/suisseBold.ttf);
+  font-weight: bold;
+}
+
+html,
+body {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    font-family: suisse, sans-serif;
+    font-weight: normal;
+
+    --fontS: 16px;
+    --fontW: 650;
+    --inputS: 15px;
+    --marginTop: 10px;
+    --paddingLabel: 10px;
+    --cell: 25px;
+    --strokeW: 1px;
+    --colW: #ffffff;
+    --colWHover: #cccccc;
+    --colB: #000000;
+    --colBHover: #3f3f3f;
+
+    font-size: var(--fontS);
+    font-weight: var(--fontW);
+}
+
+
+canvas {
+    display: block;
+}
+
+h1 {
+  font-size: 20px;
+  font-family: suisseB;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#intro {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--colW);
+  padding: var(--cell);
+  position: absolute;
+  color: var(--colB);
+}
+
+
+#dropzone {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: var(--cell);
+    color: var(--colB);
+    background-color: #ffffff;
+    opacity: 0;
+    display: none;
+}
+
+
+#UI {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#playerCon {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(var(--cell)*2);
+  position: absolute;
+}
+
+#controlCon {
+  width: 100%;
+  height: 100%;
+  bottom: calc(var(--cell)*2);
+  position: relative;
+}
+
+.uiCon {
+  width: 20%;
+  min-width: 200px;
+  bottom: 0;
+  box-sizing: border-box;
+  position: absolute;
+}
+
+.foldCon {
+  height: calc(var(--cell)*2);
+  padding: 0 var(--cell) 0 var(--cell);
+  border: var(--strokeW) solid;
+  border-color: var(--colB);
+  box-sizing: border-box;
+  background-color: var(--colW);
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+.foldCon:hover{
+  height: 600px;
+}
+
+.foldConSmall:hover{
+  height: 400px;
+}
+
+
+#volctrCon {
+  height: calc(var(--cell)*2);
+  left: 0;
+  min-width: 200px;
+}
+
+#globalCon {
+  left: 20%;
+}
+
+#videoCon {
+  left: 40%;
+}
+
+#audioCon {
+  left: 60%;
+}
+
+#consoleCon {
+  left: 80%;
+}
+
+
+
+#playCon {
+  width: calc(var(--cell)*2); 
+  height: 100%;  
+  margin-top: 0;
+}
+
+#play {
+  background-image: url(../assets/icons/playpause.svg);
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+}
+
+#play:hover {
+  background-color: var(--colWHover);
+}
+
+#muteCon {
+  width: calc(var(--cell)*2); 
+  height: 100%;
+  float: left;
+  margin-top: 0;
+}
+
+
+#volCon {
+  width: calc(100% - var(--cell)*2);
+  height: 100%;
+  float: left;
+  margin: -2px 0 0 -2px;
+}
+
+#modeGroup {
+  width: 100%;
+  position: relative;
+}
+
+#volGroup {
+  left: calc(var(--cell)*5);
+  width: 50%;
+  position: absolute;
+  padding-right: var(--cell);
+  box-sizing: border-box;
+  top: 0;
+}
+
+.uiMode {
+  position: absolute;
+  width: 100%;
+}
+
+
+
+/*----------------------------SLIDER----------------------------*/
+
+  .slidecontainer {
+    margin-top: var(--cell);
+  }
+
+  .slidecontainer span {
+    position: absolute;
+    margin-top: 6px;
+    margin-left: var(--paddingLabel);
+  }
+
+  .slidecontainerSmall {
+    width: 100%;
+    height: calc(var(--cell)*1);
+    margin-bottom: var(--cell);
+  }
+
+  .slider {
+    appearance: none;
+    width: 40%;
+    height: 100%;
+    background-color: var(--colW);
+    border: var(--strokeW) solid;
+    border-color: var(--colB);
+    box-sizing: border-box;
+    color: var(--colB);
+    outline: none;
+  }
+
+  #vol {
+    width: 100%;
+  }
+
+  .slidecontainerSmall .slider{
+    width: 100%;
+  }
+  
+
+  .slider:hover {
+    background: var(--colWHover);
+  }
+  
+ 
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    width: var(--cell);
+    height: var(--cell); 
+    background: var(--colB);
+    cursor: pointer;
+  }
+
+  #vol::-webkit-slider-thumb {
+    width: calc(var(--cell)*2);
+    height: calc(var(--cell)*2); 
+  }
+  
+ .slider::-webkit-slider-thumb{
+    background: var(--colB);
+  }
+
+  .slider::-webkit-slider-thumb:hover {
+    background: var(--colBHover);
+  }
+
+
+/*----------------------------BUTTON----------------------------*/
+.buttoncontainer {
+  height: calc(var(--cell)*2);
+  margin-top: var(--cell);
+
+}
+
+input[type=button] {
+    background-color: var(--colW);
+    border: var(--strokeW) solid;
+    border-color: var(--colB);
+    color: var(--colB);
+    height: 100%;
+    box-sizing: border-box;
+    font-family: suisse, sans-serif;
+    font-weight: var(--fontW);
+    font-size: var(--fontS);
+    text-align: center;
+    padding: 0 var(--cell);
+}
+
+input[type=button]:hover {
+    background-color: var(--colWHover);
+}
+
+
+/*----------------------------CHECKBOX----------------------------*/
+
+.checkcontainer {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+    margin-top: var(--cell);
+    padding-left: calc(var(--cell) + var(--paddingLabel));
+}
+
+
+.checkcontainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--cell);
+    width: var(--cell);
+    background-color: var(--colW);
+    border: var(--strokeW) solid;
+    border-color: var(--colB);
+    box-sizing: border-box;
+}
+
+.checkmarkBig {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(var(--cell)*2);
+  width: calc(var(--cell)*2);
+  background-color: var(--colW);
+  border: var(--strokeW) solid;
+  border-color: var(--colB);
+}
+
+
+
+.checkcontainer:hover input~.checkmark {
+    background-color: var(--colWHover);
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+.checkcontainer input:checked~.checkmark:after {
+    display: block;
+}
+
+
+.checkcontainer .checkmark:after {
+  background-image: url(../assets/icons/cross.svg);
+  width: 100%;
+  height: 100%;
+}
+
+#muteCon .checkmark:after {
+  background-image: url(../assets/icons/vol.svg);
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+/*----------------------------RADIO----------------------------*/
+
+.radiocontainer {
+  display: block;
+  position: relative;
+  padding-left: calc(var(--cell) + var(--paddingLabel));
+  margin: var(--cell) var(--cell) 0 0;
+  cursor: pointer;
+  user-select: none;
+  height: var(--cell);
+
+}
+
+.radiocontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.radiocheckmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--cell);
+  width: var(--cell);
+  border: var(--strokeW) solid;
+  border-color: var(--colB);
+  background-color: var(--colW);
+}
+
+.radiocontainer:hover input ~ .radiocheckmark {
+  background-color: var(--colWHover);
+}
+
+.radiocontainer input:checked ~ .radiocheckmark {
+  background-color: var(--colB);
+}
+
+
+/*----------------------------SELECT----------------------------*/
+
+.selectCon {
+  width: 100%;
+  height: var(--cell);
+  margin-top: var(--cell);
+  background-color: var(--colW);
+  font-family: suisse, sans-serif;
+  font-weight: var(--fontW);
+  font-size: var(--fontS);
+}
+
+
+.selectCon span {
+  position: absolute;
+  margin-left: var(--paddingLabel);
+}
+
+.select {
+  font-family: suisse, sans-serif;
+  font-weight: var(--fontW);
+  font-size: var(--fontS);
+}
+
+.select-selected{
+  display: none;
+  background-color: var(--colB);
+  color: var(--colW);
+}
